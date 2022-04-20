@@ -3,8 +3,6 @@ const ApiError = require('../utils/ApiError');
 
 // Verify Token
 const auth = (req, res, next) => {
-  // Auth header value = > send token into header
-
   const bearerHeader = req.headers.authorization;
   // check if bearer is correct
   // eslint-disable-next-line valid-typeof
@@ -14,7 +12,7 @@ const auth = (req, res, next) => {
     next();
   } else {
     // Forbidden
-    return res(new ApiError(httpStatus.FORBIDDEN, 'Forbidden'));
+    return res.send(new ApiError(httpStatus.FORBIDDEN, 'Forbidden'));
   }
 };
 
